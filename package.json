@@ -1,0 +1,23 @@
+{
+  "name": "devprofilegenerator",
+  "version": "1.0.0",
+  "description": "Generates a PDF of a developer from their GitHub username",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrbHouseOnFire/DevProfileGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrbHouseOnFire/DevProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/BrbHouseOnFire/DevProfileGenerator#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "inq": "^0.1.6"
+  }
+}
