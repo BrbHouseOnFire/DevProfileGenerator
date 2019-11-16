@@ -31,16 +31,25 @@ let prompter = () => {
         axios.get(queryUrl).then(function(res) {
             // console.log(res);
             let data = {
-                avatar: res.data.avatar_url,
-                login: res.data.login,
-                location: res.data.location,
-                url: res.data.html_url,
-                blog: res.data.blog,
-                bio: res.data.bio,
-                public_repos: res.data.public_repos,
-                followers: res.data.followers,
-                following: res.data.following,
-                fav_color: favColor
+                avatar: res.data.avatar_url, // profile image
+                login: res.data.login, // username
+                location: res.data.location, // google search location
+                url: res.data.html_url, // gitHub url
+                blog: res.data.blog, // blog url
+                bio: res.data.bio, // bio text
+                public_repos: res.data.public_repos, // # of public repos
+                followers: res.data.followers, // # of followers
+                following: res.data.following, // # following
+                fav_color: favColor // user selected color choice
+            }
+            // console.log(res.data.bio);
+            if (res.data.blog === null || res.data.blog === "") {
+                // console.log("blog null");
+                data.blog = data.url;
+            }
+            if (res.data.bio === null || res.data.bio === "") {
+                // console.log("bio null");
+                data.bio = "This is my GitHub profile!";
             }
             axios.get(repoUrl).then(function(rip) {
                 // console.log(util.inspect(rip))
@@ -90,55 +99,47 @@ let createHTML = (data) => {
     </head>
     <body class="bod flex column jcc aic " id="pinMe">
         <h1 class = "h">
-            <!-- Login -->
             ${data.login}
         </h1>
         <div id="imgContainer">
-            <!-- avatar_url -->
             <img src="${data.avatar}">
         </div>
+        <div class="bio">
+            <p>
+                Bio: ${data.bio}
+            </p>
+        </div>
+        <div class="container flex jcsa aic">
         <div id="ulOneContainer">
             <ul>
                 <li>
-                    <!-- Location -->
                     <a href="https://www.google.com/maps/search/${data.location}">User Location</a>
                 </li>
                 <li>
-                    <!-- url (github) -->
-                    <a href="${data.url}">Github Link</a>
+                    <a href="${data.url}">GitHub Link</a>
                 </li>
                 <li>
-                    <!-- blog -->
                     <a href="${data.blog}">Blog Link</a>
                     
                 </li>
             </ul>
         </div>
-        <div class="bio">
-            <p>
-                <!-- bio -->
-                ${data.bio}
-            </p>
-        </div>
         <div id="ulTwoContainer">
             <ul>
                 <li>
-                    <!-- public_repos -->
                     Number of Public Repositories: ${data.public_repos}
                 </li>
                 <li>
-                    <!-- followers -->
                     Number of Followers: ${data.followers}
                 </li>
                 <li>
-                    <!-- following -->
                     Number Following: ${data.following}
                 </li>
                 <li>
-                    <!-- stargazers_count -->
-                    Stargazers: ${data.stargazers}
+                    Star Gazers: ${data.stargazers}
                 </li>
             </ul> 
+        </div>
         </div>
     
     </body>

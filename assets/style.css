@@ -5,7 +5,7 @@ h1 {
 img {
     max-width: 35vw;
     max-height: 35vh;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 }
 ul {
     padding: 0;
@@ -25,6 +25,12 @@ p {
 }
 .jcc {
     justify-content: center;
+}
+.jcsa {
+    justify-content: space-around;
+}
+.jcsb {
+    justify-content: space-between;
 }
 .aic {
     align-items: center;
@@ -53,34 +59,39 @@ p {
     border-style: solid;
     border-left-width: 0px;
     border-right-width: 0px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
     border-radius: 1rem;
     padding: 1rem;
     margin: 1rem;
 }
-#ulOneContainer {
+.container {
+    
     background-color: white;
     border-style: solid;
-    border-left-width: 1px;
-    border-right-width: 1px;
+    border-left-width: 3px;
+    border-right-width: 3px;
     border-top-width: 0px;
     border-bottom-width: 0px;
     border-radius: 1rem;
     padding: 1rem;
-
+}
+#ulOneContainer {
+    margin: 1rem;
 }
 .bio {
+    background-color: white;
+    border-style: solid;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-radius: 1rem;
+    padding: 0px 1rem;
+    margin: 0.5rem;
 
 }
 #ulTwoContainer {
-    background-color: white;
-    border-style: solid;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-radius: 1rem;
-    padding: 1rem;
+    margin: 1rem;
 
 }
