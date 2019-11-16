@@ -3,8 +3,8 @@ const util = require("util");
 const inq = require("inquirer");
 const axios = require("axios");
 // const pdf = require("html-pdf");
-// const pdf = require("html5-to-pdf");
-// const path = require("path");
+const pdf = require("html5-to-pdf");
+const path = require("path");
 
 
 let prompter = () => {
@@ -13,7 +13,7 @@ let prompter = () => {
         {
             type: 'input',
             name: 'username',
-            message: `What is the user's github Username?`
+            message: `What is the developer's GitHub Username?`
         },
         {
             type: 'input',
@@ -68,14 +68,11 @@ let prompter = () => {
                         console.log(err);
                     }
                     else{
-                        console.log('success');
+                        console.log('HTML Successfull');
+                        createPDF(data.login);
                     }
                 })
-
             })
-
-
-
         });
     });
         
@@ -145,6 +142,36 @@ let createHTML = (data) => {
     </body>
     </html>`
     return str;
+};
+
+let createPDF = async (login) => {
+    console.log("pdfing");
+    const html5ToPDF = new pdf({
+      inputPath: path.join(__dirname, "./testingGround/output.html"),
+      outputPath: path.join(__dirname, `./testingGround/${login}Profile.pdf`),
+      include: [
+        // path.join(__dirname, "./node_modules/frow/dist/frow.min.css"),
+        path.join(__dirname, "./assets/style.css")
+      ],
+      options: { printBackground: true }
+    });
+    await html5ToPDF.start();
+    await html5ToPDF.build();
+    await html5ToPDF.close();
+    await deleteHTML();
+    console.log("DONE");
+    process.exit(0);
+};
+
+let deleteHTML = async () => {
+    fs.unlink("./testingGround/output.html", err => {
+        if (err) {
+            console.log(err);
+        }
+        else{
+            console.log('HTML file cleared successfully');
+        }
+    })
 }
 
 
