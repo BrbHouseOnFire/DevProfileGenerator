@@ -2,7 +2,6 @@ const fs = require("fs");
 const util = require("util");
 const inq = require("inquirer");
 const axios = require("axios");
-// const pdf = require("html-pdf");
 const pdf = require("html5-to-pdf");
 const path = require("path");
 
@@ -63,7 +62,7 @@ let prompter = () => {
                 let html = createHTML(data);
 
                 // write to file
-                fs.writeFile("./testingGround/output.html", html, err => {
+                fs.writeFile("./output/output.html", html, err => {
                     if (err) {
                         console.log(err);
                     }
@@ -147,8 +146,8 @@ let createHTML = (data) => {
 let createPDF = async (login) => {
     console.log("pdfing");
     const html5ToPDF = new pdf({
-      inputPath: path.join(__dirname, "./testingGround/output.html"),
-      outputPath: path.join(__dirname, `./testingGround/${login}Profile.pdf`),
+      inputPath: path.join(__dirname, "./output/output.html"),
+      outputPath: path.join(__dirname, `./output/${login}Profile.pdf`),
       include: [
         // path.join(__dirname, "./node_modules/frow/dist/frow.min.css"),
         path.join(__dirname, "./assets/style.css")
@@ -164,7 +163,7 @@ let createPDF = async (login) => {
 };
 
 let deleteHTML = async () => {
-    fs.unlink("./testingGround/output.html", err => {
+    fs.unlink("./output/output.html", err => {
         if (err) {
             console.log(err);
         }
