@@ -5,7 +5,6 @@ h1 {
 img {
     max-width: 35vw;
     max-height: 35vh;
-    /* margin-bottom: 1rem; */
 }
 ul {
     padding: 0;
@@ -43,12 +42,6 @@ p {
 .d-n {
     display: none;
 }
-/* .w100 {
-    width: 100vw;
-}
-.h100 {
-    height: 100vh;
-} */
 .bod {
     min-width: 30vw;
     min-height: 30vh;
