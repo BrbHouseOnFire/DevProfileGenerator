@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/BrbHouseOnFire/DevProfileGenerator#readme",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "html5-to-pdf": "^3.2.0",
     "inq": "^0.1.6",
     "path": "^0.12.7"
